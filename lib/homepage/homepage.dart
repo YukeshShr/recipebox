@@ -79,14 +79,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     bookmarks.isEmpty
-                        ? const Text(
-                            'No Recipes have been bookmarked',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
+                        ? Container(
+                            height: 230,
+                            alignment: Alignment.center,
+                            child: const Text(
+                              'No Recipes have been bookmarked',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           )
                         : SizedBox(
                             height: 230,
