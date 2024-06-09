@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipebox/homepage.dart';
+import 'package:recipebox/homepage/homepage.dart';
 import 'package:recipebox/theme.dart';
 
 void main() {

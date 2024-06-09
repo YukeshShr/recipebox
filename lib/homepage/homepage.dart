@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:recipebox/bookmark_item.dart';
 import 'package:recipebox/data.dart';
-import 'package:recipebox/recipe_thumbnail.dart';
+import 'package:recipebox/homepage/components/bookmark_item.dart';
+import 'package:recipebox/homepage/components/recipe_thumbnail.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -78,27 +78,37 @@ class _MyHomePageState extends State<MyHomePage> {
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: 230,
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) {
-                          return const SizedBox(height: 15);
-                        },
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: bookmarks.length,
-                        itemBuilder: (context, index) {
-                          String key = bookmarks.keys.elementAt(index);
-                          return BookmarkItem(
-                            id: key,
-                            title: bookmarks[key]![0],
-                            img: bookmarks[key]![1],
-                            removeBookmark: removeBookmark,
-                            updateBookmark: updateBookmark,
-                          );
-                        },
-                      ),
-                    ),
+                    bookmarks.isEmpty
+                        ? const Text(
+                            'No Recipes have been bookmarked',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            textAlign: TextAlign.center,
+                          )
+                        : SizedBox(
+                            height: 230,
+                            child: ListView.separated(
+                              separatorBuilder: (context, index) {
+                                return const SizedBox(height: 15);
+                              },
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: bookmarks.length,
+                              itemBuilder: (context, index) {
+                                String key = bookmarks.keys.elementAt(index);
+                                return BookmarkItem(
+                                  id: key,
+                                  title: bookmarks[key]![0],
+                                  img: bookmarks[key]![1],
+                                  removeBookmark: removeBookmark,
+                                  updateBookmark: updateBookmark,
+                                );
+                              },
+                            ),
+                          ),
                   ],
                 ),
               ),
